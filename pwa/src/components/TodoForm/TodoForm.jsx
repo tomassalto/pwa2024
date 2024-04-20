@@ -17,10 +17,10 @@ export const TodoForm = ({ addTodo }) => {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="todo-input"
-        placeholder="¿Qué tenes ganas de hacer hoy?"
+        className="todo-input rounded-full"
+        placeholder="Escribí tu tarea acá..."
       />
-      <button type="submit" className="todo-btn">
+      <button type="submit" className="todo-btn ml-2">
         Agregar
       </button>
     </form>

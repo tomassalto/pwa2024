@@ -1,10 +1,32 @@
 # TP PWA REACT
 
-## Integrantes:
+## Integrantes
 
-Salto, Tomas Agustin FAI-3635
+Salto, Tomas Agustin FAI-3635\
+Salazar Daniel FAI-962\
+Julian Tolosa fai-3182
 
-# Getting Started with Create React App
+## Documentación
+
+### Index.js
+
+En el script index.js se utiliza el método introducido en React18 `ReactDOM.createRoot` el cual inicializa el árbol de componentes. Este método permite la coexistencia de múltiples raíces de React en la misma página.
+
+`root.render` es el método que efectivamente renderiza tu aplicación React en el DOM. Es un componente de React que ayuda a detectar prácticas problemáticas en tu código y las advertirá en el modo de desarrollo.
+
+`reportWebVitals` este es un script que te proporciona información sobre el rendimiento de tu aplicación.
+
+[![image.png](https://i.postimg.cc/C17975qr/image.png)](https://postimg.cc/CBZvLFJb)
+
+### App.js
+
+[![image.png](https://i.postimg.cc/Qd57TTLD/image.png)](https://postimg.cc/3k8WMWJf)
+
+En este script se importan tanto los styles del archivo `App.css` tanto como el componente `TodoWrapper` encargado de encapsular a los componentes más pequeños/simples que podrían reutilizarse en otro lado de la aplicación.
+
+Se crea una function `App` encargada de retornar el componente principal de la aplicación.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
