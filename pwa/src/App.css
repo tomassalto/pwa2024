@@ -105,3 +105,8 @@ h1 {
 p {
   color: white;
 }
+
+.error-message {
+  color: red;
+  margin-top: 2px;
+}

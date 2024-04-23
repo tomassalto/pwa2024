@@ -15,10 +15,10 @@ export const EditTodoForm = ({ editTodo, task }) => {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="todo-input"
-        placeholder="Update task"
+        className="todo-input rounded-full"
+        placeholder="Editá tu tarea"
       />
-      <button type="submit" className="todo-btn">
+      <button type="submit" className="todo-btn ml-2">
         Editar
       </button>
     </form>

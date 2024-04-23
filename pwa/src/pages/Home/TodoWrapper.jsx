@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Todo } from "../../components/Todo/Todo";
 import { TodoForm } from "../../components/TodoForm/TodoForm";
 import TodoFilter from "../../components/TodoFilter/TodoFilter";
-import { v4 as uuidv4 } from "uuid";
-import { EditTodoForm } from "../../components/EditTodoForm";
 import Titulo from "../../components/Titulo/Titulo";
+import { addTodo, deleteTodo, toggleComplete } from "../../utils/todoActions";
+import { EditTodoForm } from "../../components/EditTodoForm/EditTodoForm";
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -12,46 +12,6 @@ export const TodoWrapper = () => {
   const [filterValue, setFilterValue] = useState("");
   const [totalTodos, setTotalTodos] = useState(0);
   const [completedTodos, setCompletedTodos] = useState(0);
-
-  const addTodo = (todo) => {
-    setTodos([
-      ...todos,
-      { id: uuidv4(), task: todo, completed: false, isEditing: false },
-    ]);
-    setTotalTodos(totalTodos + 1);
-  };
-
-  const deleteTodo = (id) => {
-    setTodos((prevTodos) => {
-      const deletedTodo = prevTodos.find((todo) => todo.id === id);
-      const newTodos = prevTodos.filter((todo) => todo.id !== id);
-
-      // Decrement totalTodos
-      setTotalTodos(totalTodos - 1);
-
-      // Decrement completedTodos if the deleted todo was completed
-      if (deletedTodo && deletedTodo.completed) {
-        setCompletedTodos(completedTodos - 1);
-      }
-
-      return newTodos;
-    });
-  };
-
-  const toggleComplete = (id) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      );
-
-      const currentCompleted = updatedTodos.filter(
-        (todo) => todo.completed
-      ).length;
-      setCompletedTodos(currentCompleted);
-
-      return updatedTodos;
-    });
-  };
 
   const editTodo = (id) => {
     setTodos(
@@ -61,12 +21,32 @@ export const TodoWrapper = () => {
     );
   };
 
-  const editTask = (task, id) => {
+  const updateTodo = (task, id) => {
+    const trimmedTask = task.trim();
+
+    if (trimmedTask === "") {
+      return;
+    }
+
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+        todo.id === id
+          ? { ...todo, task: trimmedTask, isEditing: !todo.isEditing }
+          : todo
       )
     );
+  };
+
+  const handleAddTodo = (todo) => {
+    addTodo(todos, setTodos, setTotalTodos, todo);
+  };
+
+  const handleDeleteTodo = (id) => {
+    deleteTodo(todos, setTodos, setTotalTodos, setCompletedTodos, id);
+  };
+
+  const handleToggleComplete = (id) => {
+    toggleComplete(todos, setTodos, setCompletedTodos, id);
   };
 
   const handleFilterChange = (value) => {
@@ -105,7 +85,7 @@ export const TodoWrapper = () => {
           <p>¿Qué tenés que hacer hoy?</p>
         )}
       </div>
-      <TodoForm addTodo={addTodo} />
+      <TodoForm addTodo={handleAddTodo} />
 
       {/* Mostrar TodoFilter solo si hay más de un todo */}
       {totalTodos > 1 && (
@@ -123,14 +103,14 @@ export const TodoWrapper = () => {
       {displayTodos.length > 0
         ? displayTodos.map((todo) =>
             todo.isEditing ? (
-              <EditTodoForm key={todo.id} editTodo={editTask} task={todo} />
+              <EditTodoForm key={todo.id} editTodo={updateTodo} task={todo} />
             ) : (
               <Todo
                 key={todo.id}
                 task={todo}
-                deleteTodo={deleteTodo}
+                deleteTodo={() => handleDeleteTodo(todo.id)}
                 editTodo={editTodo}
-                toggleComplete={toggleComplete}
+                toggleComplete={() => handleToggleComplete(todo.id)}
               />
             )
           )

@@ -26,6 +26,34 @@ En este script se importan tanto los styles del archivo `App.css` tanto como el 
 
 Se crea una function `App` encargada de retornar el componente principal de la aplicación.
 
+### Index.css
+
+[![image.png](https://i.postimg.cc/vmFb9RfJ/image.png)](https://postimg.cc/v4zJFNPh)
+
+En las primeras 3 líneas de codigo `@tailwind base`, `@tailwind components` y `@tailwind utilities` son directivas de PostCSS que indican al compilador de Tailwind debe incluir los estilos base, componentes y utilidades de Tailwind en tu hoja de estilos.
+
+Luego se decalaran los estilos globales en la etiqueta `body` y se establece una fuente específica para los elementos `code` de mi página.
+
+### Package.json
+
+[![image.png](https://i.postimg.cc/8k6mDcSd/image.png)](https://postimg.cc/nMnDGHMM)
+
+[![image.png](https://i.postimg.cc/FzrSjrYz/image.png)](https://postimg.cc/2bt3YfFN)
+
+En este archivo se establece la configuaración del proyecto.
+
+Elijo el nombre del proyecto `"name": "pwa"`,
+`"version": "0.1.0"` indica la versión actual del proyecto.
+
+Las dependencias son los paquetes que tu proyecto necesita para funcionar correctamente.
+`FontAwesome` para los iconos, `Testing Library` realiza pruebas en React, `Flowbite y Flowbite-react` es una libreria de React para crear componentes, `React y React DOM` es la biblioteca fundamental de React, `UUID` genera id únicos y `Web Vitals` para medir las métricas de rendimiento web
+
+En la sección de los scripts se definen comandos que se pueden ejecutar y realizar acciones como `npm start` que levantara el servidor de la aplicación.
+
+La configuraciones proporcionan un entorno de desarrollo sólido para la aplicación web con React. En este caso se usan `ESLint` y `Browserslist` ayudan a mantener un código limpio y garantizar la compatibilidad con navegadores. `Autoprefixer` y `PostCSS` se encargan de procesar y optimizar tu CSS y `Tailwind CSS` es el framework que estás utilizando para estilizar tu aplicación de manera rápida y eficiente.
+
+Por último estan las dependencias de desarrollo del usuario, `autoprefixer` y `postcss` y `tailwindcss`.
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
