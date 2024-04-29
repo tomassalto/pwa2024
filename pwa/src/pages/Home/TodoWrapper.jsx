@@ -6,6 +6,18 @@ import Titulo from "../../components/Titulo/Titulo";
 import { addTodo, deleteTodo, toggleComplete } from "../../utils/todoActions";
 import { EditTodoForm } from "../../components/EditTodoForm/EditTodoForm";
 
+//Muy buen trabajo.
+//Me encanto la UI se ve muy limpia. Para dejarla 10 puntos podrian probar como se ve que el boton de agregar tenga el mismo border radius que los input.
+
+//Observaciones:
+
+//Input deberia ser un componente. Si se fijan siempre usan un mismo classname para todos los input, todo-input. Ese codigo repetido deberia evitarse.
+//Eviten el uso del app.css o el index.css para clases que deberian ser de los componentes/pages.
+//Intenten usar styles modules como vimos en clase para evitar tener problemas cuando la app crezca. Para esto nombre los archivos css de cada componente como nombreComponente.module.css
+//Luego importa `import styles from './nombreComponente.module.css' y utilizan el objeto styles para incorporar el css a los className.
+//Borren el codigo autogenerado del readme.
+//Podrian agregar algunas imagenes de como se ve la aplicacion corriendo al readme?
+
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
